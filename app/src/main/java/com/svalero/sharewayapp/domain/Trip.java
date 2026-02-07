@@ -17,7 +17,7 @@ public class Trip implements Serializable {
     private Long id;
     private String origin;
     private String destination;
-    private LocalDateTime dateTime;
+    private LocalDate dateTime;
     private String transportTypes;
     private Integer availableSeats;
     private Integer price;

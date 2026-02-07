@@ -1,6 +1,7 @@
 package com.svalero.sharewayapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.svalero.sharewayapp.R;
+import com.svalero.sharewayapp.TripDetailView;
 import com.svalero.sharewayapp.domain.Trip;
 
 import java.util.List;
@@ -36,8 +38,18 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripHolder> {
     public void onBindViewHolder(@NonNull TripHolder holder, int position) {
         Trip trip = tripList.get(position);
 
-        holder.destination.setText(trip.getDestination());
-        holder.origin.setText(trip.getOrigin());
+        holder.destination.setText("Destination: " + trip.getDestination());
+        holder.origin.setText("Origin: " + trip.getOrigin());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TripDetailView.class);
+
+                intent.putExtra("trip_obj", trip);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
