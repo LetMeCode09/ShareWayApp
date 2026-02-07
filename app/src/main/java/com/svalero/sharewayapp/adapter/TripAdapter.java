@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,7 +42,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return tripList.size();
     }
 
     public class TripHolder extends RecyclerView.ViewHolder {
@@ -54,8 +53,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripHolder> {
         public TripHolder(@NonNull View itemView) {
             super(itemView);
 
-            origin = itemView.findViewById();
-            destination = itemView.findViewById(R.id.);
+            origin = itemView.findViewById(R.id.item_trip_origin);
+            destination = itemView.findViewById(R.id.item_trip_destination);
         }
     }
 }
