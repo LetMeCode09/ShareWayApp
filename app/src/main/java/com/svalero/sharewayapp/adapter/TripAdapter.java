@@ -1,16 +1,17 @@
 package com.svalero.sharewayapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.svalero.sharewayapp.R;
+import com.svalero.sharewayapp.TripDetailView;
 import com.svalero.sharewayapp.domain.Trip;
 
 import java.util.List;
@@ -38,12 +39,22 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripHolder> {
         Trip trip = tripList.get(position);
 
         holder.destination.setText(trip.getDestination());
-        holder.origin.setText(trip.getOrigin());
+        holder.origin.setText("Origin: " + trip.getOrigin());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TripDetailView.class);
+
+                intent.putExtra("trip_obj", trip);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return tripList.size();
     }
 
     public class TripHolder extends RecyclerView.ViewHolder {
@@ -54,8 +65,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripHolder> {
         public TripHolder(@NonNull View itemView) {
             super(itemView);
 
-            origin = itemView.findViewById();
-            destination = itemView.findViewById(R.id.);
+            origin = itemView.findViewById(R.id.item_trip_origin);
+            destination = itemView.findViewById(R.id.item_trip_destination);
         }
     }
 }
