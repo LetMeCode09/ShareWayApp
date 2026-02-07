@@ -30,7 +30,6 @@ public class TripListView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadTrips();
 
         recyclerView = findViewById(R.id.trip_list);
 
@@ -40,6 +39,9 @@ public class TripListView extends AppCompatActivity {
 
         tripAdapter = new TripAdapter(this, tripList);
         recyclerView.setAdapter(tripAdapter);
+
+        loadTrips();
+
     }
 
     protected void onResume() {

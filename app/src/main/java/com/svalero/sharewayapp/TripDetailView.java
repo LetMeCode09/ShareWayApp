@@ -1,6 +1,7 @@
 package com.svalero.sharewayapp;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +29,17 @@ public class TripDetailView extends AppCompatActivity {
         tvOrigin.setText(trip.getOrigin());
         tvDestination.setText(trip.getDestination());
 
+        ImageButton btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(v -> {
+            finish();
+        });
+
         if (trip.getPrice() != null) {
             tvPrice.setText(trip.getPrice() + "€");
         }
 
         if (trip.getAvailableSeats() != null) {
-            tvSeats.setText(trip.getAvailableSeats() + " plazas libres");
+            tvSeats.setText(trip.getAvailableSeats() + " seats available");
         }
 
         if (trip.getDateTime() != null) {
@@ -43,7 +49,7 @@ public class TripDetailView extends AppCompatActivity {
         tvTransport.setText(trip.getTransportTypes());
 
         findViewById(R.id.btn_book).setOnClickListener(v -> {
-            Toast.makeText(this, "Reserva iniciada para " + trip.getDestination(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Booking started for " + trip.getDestination(), Toast.LENGTH_SHORT).show();
         });
     }
 }

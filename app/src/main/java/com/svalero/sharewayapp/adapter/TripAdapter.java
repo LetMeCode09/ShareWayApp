@@ -38,7 +38,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripHolder> {
     public void onBindViewHolder(@NonNull TripHolder holder, int position) {
         Trip trip = tripList.get(position);
 
-        holder.destination.setText("Destination: " + trip.getDestination());
+        holder.destination.setText(trip.getDestination());
         holder.origin.setText("Origin: " + trip.getOrigin());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
